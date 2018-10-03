@@ -9,8 +9,6 @@ import br.com.rtejada.sistema.entidades.Pessoa;
 import br.com.rtejada.sistema.entidades.Storage;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -29,12 +27,14 @@ public class Leitor {
         Scanner scanner = new Scanner(new FileReader("C:/Users/rogte/OneDrive/Documentos/arquivo.txt"))
                 .useDelimiter(",");
                 
-        Pessoa p = new Pessoa();
+        
         
         while (scanner.hasNextLine()) {
+            
+            Pessoa p = new Pessoa();
             p.setNome(scanner.next());
             p.setIdade(scanner.next());
-            p.setSalario(scanner.next());
+            p.setSalario(scanner.next());            
             Storage.save(p);
         }          
         

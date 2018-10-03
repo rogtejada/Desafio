@@ -18,8 +18,8 @@ public class Storage {
     
     private static List<Pessoa> pessoas = new ArrayList<>();
     
-    public static void save(Pessoa pessoa){
-        pessoas.add(pessoa);
+    public static void save(Pessoa pessoa){        
+        pessoas.add(pessoa);        
     }
     
     public static List<Pessoa> getPessoas(){        

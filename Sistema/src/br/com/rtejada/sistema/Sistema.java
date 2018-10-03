@@ -6,7 +6,6 @@
 package br.com.rtejada.sistema;
 
 import br.com.rtejada.sistema.comparador.Comparador;
-import br.com.rtejada.sistema.entidades.Pessoa;
 import br.com.rtejada.sistema.leitor.Leitor;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -63,6 +62,7 @@ public class Sistema {
                     System.out.println("Fim do Programa!");
                     break;
                 default:
+                    System.out.println("Digite um Número Válido!");
                     break;            
             }
             tec = teclado.nextInt();
