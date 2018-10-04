@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 
 /**
@@ -23,22 +24,40 @@ public class Leitor {
                 
     }
     
-    public void read() throws FileNotFoundException, IOException {               
-              
-        BufferedReader br = new BufferedReader(new FileReader("C:/Users/rogte/OneDrive/Documentos/arquivo.txt"));
-              
-        
-        
-        for(int i =0;i<3;i++) {            
+    public void read() throws FileNotFoundException, IOException { 
+         
+        try{      
+            BufferedReader br = new BufferedReader(new FileReader("C:/Users/rogte/OneDrive/Documentos/arquivo.txt"));
+            for(int i =0;i<3;i++) {            
             
-            String linha = br.readLine();
-            String info[] = linha.split(",");
-            Pessoa p = new Pessoa();            
-            p.setNome(info[0]);
-            p.setIdade(info[1]);
-            p.setSalario(info[2]);            
-            Storage.save(p);
-        }         
+                String linha = br.readLine();
+                String info[] = linha.split(",");
+                Pessoa p = new Pessoa();            
+                p.setNome(info[0]);
+                p.setIdade(info[1]);
+                p.setSalario(info[2]);            
+                Storage.save(p);
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("Arquivo Nao encontrado!");
+            System.out.println("Digite o caminho correto do arquivo:");
+            String arq = new String();
+            Scanner scan = new Scanner(System.in);
+            arq = scan.nextLine();
+            BufferedReader br = new BufferedReader(new FileReader(arq));
+            for(int i =0;i<3;i++) {            
+            
+                String linha = br.readLine();
+                String info[] = linha.split(",");
+                Pessoa p = new Pessoa();            
+                p.setNome(info[0]);
+                p.setIdade(info[1]);
+                p.setSalario(info[2]);            
+                Storage.save(p);
+            }
+        }        
+        
+                 
         
     }
     
