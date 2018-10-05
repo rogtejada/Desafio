@@ -8,6 +8,7 @@ package br.com.rtejada.sistema;
 import br.com.rtejada.sistema.comparador.Comparador;
 import br.com.rtejada.sistema.leitor.Leitor;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -21,7 +22,7 @@ public class Sistema {
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here     
         
        Leitor read = new Leitor();

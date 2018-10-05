@@ -20,45 +20,52 @@ import java.util.Scanner;
  */
 public class Leitor {
     
+    BufferedReader br = null;
+    
     public Leitor(){     
                 
+    }    
+       
+    public void read() throws FileNotFoundException, IOException { 
+        Boolean ok = new Boolean(false);
+        String arq = new String();
+        Scanner scan = new Scanner(System.in);      
+                
+        do{ 
+            try{ 
+                System.out.println("Digite o caminho correto do arquivo:");
+                arq = scan.nextLine();
+                br = new BufferedReader(new FileReader(arq));
+                ok=true;
+                armazena();
+                
+                
+            }catch(FileNotFoundException e){
+                ok=false;
+                System.out.println("Arquivo Nao encontrado!");                    
+                                
+            }
+        }while(ok!=true);     
+               
+         
     }
     
-    public void read() throws FileNotFoundException, IOException { 
-         
-        try{      
-            BufferedReader br = new BufferedReader(new FileReader("C:/Users/rogte/OneDrive/Documentos/arquivo.txt"));
-            for(int i =0;i<3;i++) {            
-            
-                String linha = br.readLine();
-                String info[] = linha.split(",");
-                Pessoa p = new Pessoa();            
-                p.setNome(info[0]);
-                p.setIdade(info[1]);
-                p.setSalario(info[2]);            
-                Storage.save(p);
-            }
-        }catch(FileNotFoundException e){
-            System.out.println("Arquivo Nao encontrado!");
-            System.out.println("Digite o caminho correto do arquivo:");
-            String arq = new String();
-            Scanner scan = new Scanner(System.in);
-            arq = scan.nextLine();
-            BufferedReader br = new BufferedReader(new FileReader(arq));
-            for(int i =0;i<3;i++) {            
-            
-                String linha = br.readLine();
-                String info[] = linha.split(",");
-                Pessoa p = new Pessoa();            
-                p.setNome(info[0]);
-                p.setIdade(info[1]);
-                p.setSalario(info[2]);            
-                Storage.save(p);
-            }
-        }        
+    public void armazena() throws IOException{
+         for(int i =0;i<3;i++) {         
+            String linha = br.readLine();
+            String info[] = linha.split(",");
+            Pessoa p = new Pessoa();            
+            p.setNome(info[0]);
+            p.setIdade(info[1]);
+            p.setSalario(info[2]);            
+            Storage.save(p); 
+        }
+    }
+        
         
                  
         
-    }
-    
 }
+
+    
+
